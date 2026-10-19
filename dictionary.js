@@ -22,7 +22,7 @@ const searchWord = async (word) => {
     }
 
     result.innerHTML = `<h2>Loading...</h2>`;
-    searchInput.value = "";
+    
 
     const response = await fetch(
       `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
@@ -31,6 +31,7 @@ const searchWord = async (word) => {
     console.log(word);
     const data = await response.json();
     displayResult(data);
+    searchInput.value = "";
   } catch (error) {
     console.error("Fetch error:", error);
     result.innerHTML = `<h2>Sorry, word not found or network error</h2>`;
